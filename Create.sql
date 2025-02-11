@@ -8,25 +8,24 @@ CREATE table if not exists style (
 -- создаем таблицу с исполнителями
 CREATE TABLE IF NOT EXISTS singer (
 	id_singer serial PRIMARY KEY,
-	name_singer TEXT NOT null,
+	name_singer TEXT NOT null
 
+	);
+	
+-- создаем таблицу с альбомами
+CREATE TABLE IF NOT EXISTS album (
+	id_album serial PRIMARY KEY,
+	name_album TEXT NOT NULL,
+	date_create DATE NOT NULL
+	
 	);
 
 -- создаем таблицу с треками
 CREATE TABLE IF NOT EXISTS track (
 	id_track serial PRIMARY KEY,
-	id_album integer references album (id_album)
-	name_album text NOT NULL,
+	id_album integer references album (id),
 	time integer not null,
-	name_track text not null,
-	
-	);
-
--- создаем таблицу с альбомами
-CREATE TABLE IF NOT EXISTS album (
-	id_album serial PRIMARY KEY,
-	name_album TEXT NOT NULL,
-	date_create DATE NOT NULL,
+	name_track text not null
 	
 	);
 
@@ -34,7 +33,7 @@ CREATE TABLE IF NOT EXISTS album (
 CREATE TABLE IF NOT EXISTS collection (
 	id_collection serial PRIMARY KEY,
 	name_collection text not null,
-	date_creation date not null,
+	date_creation date not null
 	
 	);
 
@@ -43,17 +42,23 @@ CREATE TABLE IF NOT EXISTS collection (
 CREATE TABLE IF NOT EXISTS style_singer (
 	id serial PRIMARY KEY,
 	id_style integer NOT NULL REFERENCES style (id_style),
-	id_singer integer not null references singer (id_singer));
+	id_singer integer not null references singer (id_singer)
+	
+	);
 
 
 -- связь между альбомами и исполнителями
 CREATE TABLE IF NOT EXISTS album_singer (
 	id serial PRIMARY KEY,
-	id_album integer NOT NULL REFERENCES singer (id_album),
-	id_singer integer NOT null references singer(id_singer));
+	id_album integer NOT NULL REFERENCES singer (id_singer),
+	id_singer integer NOT null references singer(id_singer)
+
+	);
 
 --связь песни и сборника
 CREATE TABLE IF NOT EXISTS collection_track (
 	id serial PRIMARY KEY,
 	id_collection integer NOT null references collection(id_collection),
-	id_track integer not null references track(id_track));
+	id_track integer not null references track(id_track)
+	
+	);
