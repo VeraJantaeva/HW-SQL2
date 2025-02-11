@@ -1,13 +1,13 @@
  
 -- Заполняем таблицу с жанрами
 
-INSERT INTO STYLE
+INSERT INTO style
 	VALUES (1, 'Rock');
 
-INSERT INTO STYLE
+INSERT INTO style
 	VALUES (2, 'Retro');
 
-INSERT INTO STYLE
+INSERT INTO style
 	VALUES (3, 'Metall');
 
 -- Заполняем таблицу с исполнителями
@@ -28,7 +28,7 @@ INSERT INTO singer
 INSERT INTO album
 	VALUES (1, 'Back for good', '15.10.1989');
 INSERT INTO album
-	VALUES (2, 'Feel it all', '25.03.2012');
+	VALUES (2, 'Feel it all', '25.03.2020');
 INSERT INTO album
 	VALUES (3, 'screem', '10.12.1999');
 

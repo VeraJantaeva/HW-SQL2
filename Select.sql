@@ -1,3 +1,4 @@
+
 -- ЗАДАНИЕ 2
 
 --1. Название и продолжительность самого длительного трека.
@@ -39,10 +40,10 @@ SELECT id_style, COUNT(*) FROM style_singer
 
 	
 --Количество треков, вошедших в альбомы 2019–2020 годов.
-SELECT name_album, COUNT(t.name_track) FROM album a 
+select id_album COUNT (t.name_track) FROM album a
 	JOIN track t ON t.id_album = a.id_album
-	WHERE a.date_create >= '20190101' and a.date_create <= '20201231'
-	GROUP BY a.name_album;
+	WHERE a.date_create BETWEEN '20190101' and  '20201231'
+
 
 --Средняя продолжительность треков по каждому альбому.
 SELECT id_album, AVG(track.time) FROM track
@@ -50,13 +51,12 @@ SELECT id_album, AVG(track.time) FROM track
 	ORDER BY AVG(track.time);
 
 --Все исполнители, которые не выпустили альбомы в 2020 году.
-
-	
 SELECT DISTINCT name_singer FROM singer s
+where name_singer not in (
+select name_singer from singer s
 LEFT JOIN album_singer alsi ON alsi.id_singer = s.id_singer
 LEFT JOIN album a ON alsi.id_album = a.id_album
-WHERE a.date_create >= '20201231' or a.date_create <= '20200101'
-ORDER BY s.name_singer;
+WHERE a.date_create between  '20200101' and '20201231');
 
 --Названия сборников, в которых присутствует конкретный исполнитель (выберите его сами).
 SELECT DISTINCT name_collection FROM collection c

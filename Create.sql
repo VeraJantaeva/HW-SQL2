@@ -23,9 +23,9 @@ CREATE TABLE IF NOT EXISTS album (
 -- создаем таблицу с треками
 CREATE TABLE IF NOT EXISTS track (
 	id_track serial PRIMARY KEY,
-	id_album integer references album (id),
-	time integer not null,
-	name_track text not null
+	id_album integer references album (id_album),
+	name_track text NOT NULL,
+	time integer not NULL
 	
 	);
 
@@ -60,5 +60,4 @@ CREATE TABLE IF NOT EXISTS collection_track (
 	id serial PRIMARY KEY,
 	id_collection integer NOT null references collection(id_collection),
 	id_track integer not null references track(id_track)
-	
 	);
